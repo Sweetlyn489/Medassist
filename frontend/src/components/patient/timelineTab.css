@@ -1,0 +1,7 @@
+.timeline { position: relative; padding-left: 18px; }
+.timeline-item { position: relative; padding-bottom: 18px; border-left: 2px solid var(--border); padding-left: 18px; margin-left: 3px; }
+.timeline-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+.timeline-dot { position: absolute; left: -6px; top: 2px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+.timeline-row { display: flex; justify-content: space-between; align-items: center; }
+.timeline-type { font-weight: 600; font-size: 13.5px; }
+.timeline-summary { font-size: 13.5px; margin-top: 2px; }

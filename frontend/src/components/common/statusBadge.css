@@ -1,0 +1,16 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.badge-amber { background: #fdf1de; color: #92600a; }
+.badge-blue { background: #e3edfb; color: #1f4c8c; }
+.badge-green { background: #e2f3e8; color: #1c6b3c; }
+.badge-red { background: #fbe4e4; color: #a3262c; }
+.badge-slate { background: #eef0f3; color: #495467; }

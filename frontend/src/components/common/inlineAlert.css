@@ -1,0 +1,12 @@
+.inline-alert {
+  font-size: 13.5px;
+  padding: 10px 14px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.alert-info { background: #eef4fc; border-color: #d3e3f7; color: #29466f; }
+.alert-warning { background: #fdf1de; border-color: #f5dcae; color: #7a5307; }
+.alert-critical { background: #fbe4e4; border-color: #f3c6c6; color: #8c2126; }
+.alert-success { background: #e2f3e8; border-color: #c3e6cf; color: #175a30; }

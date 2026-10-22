@@ -1,0 +1,40 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const connectDB = require('./config/db');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+
+const authRoutes = require('./routes/authRoutes');
+const patientRoutes = require('./routes/patientRoutes');
+const findingRoutes = require('./routes/findingRoutes');
+const followUpRoutes = require('./routes/followUpRoutes');
+const auditRoutes = require('./routes/auditRoutes');
+const ruleRoutes = require('./routes/ruleRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+
+connectDB();
+
+const app = express();
+
+app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+app.use(express.json({ limit: '1mb' }));
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
+
+app.get('/api/health', (req, res) => res.json({ success: true, status: 'ok', time: new Date().toISOString() }));
+
+app.use('/api/auth', authRoutes);
+app.use('/api/patients', patientRoutes);
+app.use('/api/findings', findingRoutes);
+app.use('/api/followups', followUpRoutes);
+app.use('/api/audit-logs', auditRoutes);
+app.use('/api/rules', ruleRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`MediAssist API listening on port ${PORT}`));
+
+module.exports = app;

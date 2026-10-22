@@ -1,0 +1,17 @@
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(20, 26, 38, 0.45);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 6vh 16px; z-index: 100; overflow-y: auto;
+}
+.modal-panel {
+  background: var(--surface); border-radius: 8px; width: 100%;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22);
+  border: 1px solid var(--border);
+}
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; border-bottom: 1px solid var(--border);
+}
+.modal-header h3 { font-size: 15px; margin: 0; font-weight: 600; }
+.modal-close { background: none; border: none; font-size: 20px; line-height: 1; cursor: pointer; color: var(--text-muted); }
+.modal-body { padding: 18px; }
