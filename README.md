@@ -27,7 +27,11 @@ available there). Follow the steps below to run it for real.
 cd backend
 npm install
 cp .env.example .env
-# Edit .env: set MONGO_URI (and a real JWT_SECRET) if not using the local default
+# Edit .env: replace <db_password> in MONGO_URI and set a real JWT_SECRET.
+# To use a local MongoDB instance instead, set MONGO_URI to
+# mongodb://127.0.0.1:27017/mediassist
+# If your system DNS cannot resolve Atlas SRV records, set
+# MONGO_DNS_SERVERS=1.1.1.1 in backend/.env for the backend process only.
 npm run seed     # wipes and loads fictional demo data (17 patients, users, rules)
 npm run dev      # starts the API on http://localhost:5000
 ```
@@ -46,6 +50,15 @@ npm run dev             # starts the app on http://localhost:5173
 ```
 
 Open http://localhost:5173 and sign in.
+
+## Deploying to Vercel
+
+Import the repository into Vercel from its root directory. The root
+`vercel.json` configures the frontend and backend as separate services and
+routes `/api/*` to the backend, with all other paths going to the frontend.
+Add `MONGO_URI` and a strong `JWT_SECRET` to the Vercel project's environment
+variables for the backend service; do not commit production secrets. Use
+`vercel dev` from the repository root to run the services together locally.
 
 ## Demo accounts (created by `npm run seed`)
 

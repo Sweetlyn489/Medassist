@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const dns = require('node:dns');
 
 /**
  * Connects to MongoDB using Mongoose.
@@ -13,6 +14,12 @@ async function connectDB() {
   }
 
   try {
+    const dnsServers = process.env.MONGO_DNS_SERVERS
+      ?.split(',')
+      .map((server) => server.trim())
+      .filter(Boolean);
+    if (dnsServers?.length) dns.setServers(dnsServers);
+
     mongoose.set('strictQuery', true);
     const conn = await mongoose.connect(uri, { autoIndex: true });
     console.log(`MongoDB connected: ${conn.connection.host}/${conn.connection.name}`);
